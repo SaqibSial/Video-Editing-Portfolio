@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saqib Sial | Video Editor Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --text: #ffffff;
+      --text-dim: rgba(255,255,255,0.5);
+      --text-faint: rgba(255,255,255,0.3);
+      --text-ghost: rgba(255,255,255,0.2);
+      --card-bg: rgba(26,26,26,0.6);
+      --card-border: rgba(255,255,255,0.05);
+      --card-hover-border: rgba(255,255,255,0.2);
+      --divider: rgba(255,255,255,0.05);
+      --label-color: rgba(255,255,255,0.4);
+      --icon-bg: rgba(255,255,255,0.05);
+      --icon-bg-hover: rgba(255,255,255,0.1);
+      --tag-bg: rgba(255,255,255,0.05);
+      --tag-text: rgba(255,255,255,0.5);
+      --tag-border: rgba(255,255,255,0.05);
+      --btn-secondary-bg: rgba(255,255,255,0.05);
+      --btn-secondary-text: #ffffff;
+      --btn-secondary-hover: rgba(255,255,255,0.1);
+      --timeline-border: rgba(255,255,255,0.1);
+      --timeline-dot: rgba(255,255,255,0.2);
+      --faq-border: rgba(255,255,255,0.05);
+      --faq-text: rgba(255,255,255,0.7);
+      --faq-answer: rgba(255,255,255,0.5);
+      --faq-icon: rgba(255,255,255,0.4);
+      --footer-border: rgba(255,255,255,0.05);
+      --footer-text: rgba(255,255,255,0.2);
+      --trusted-text: rgba(255,255,255,0.2);
+      --trusted-badge-bg: rgba(255,255,255,0.1);
+      --contact-label: rgba(255,255,255,0.3);
+      --contact-link: rgba(255,255,255,0.8);
+      --scroll-bar: #6366f1;
+      --theme-icon-color: #ffffff;
+    }
+
+    body.light {
+      --bg: #fafaf9;
+      --text: #000000;
+      --text-dim: rgba(0,0,0,0.5);
+      --text-faint: rgba(0,0,0,0.4);
+      --text-ghost: rgba(0,0,0,0.2);
+      --card-bg: rgba(255,255,255,0.8);
+      --card-border: rgba(255,255,255,0.4);
+      --card-hover-border: rgba(99,102,241,0.2);
+      --divider: rgba(0,0,0,0.05);
+      --label-color: rgba(0,0,0,0.6);
+      --icon-bg: rgba(0,0,0,0.05);
+      --icon-bg-hover: rgba(0,0,0,0.1);
+      --tag-bg: rgba(0,0,0,0.05);
+      --tag-text: rgba(0,0,0,0.5);
+      --tag-border: rgba(0,0,0,0.05);
+      --btn-secondary-bg: rgba(0,0,0,0.05);
+      --btn-secondary-text: #000000;
+      --btn-secondary-hover: rgba(0,0,0,0.1);
+      --timeline-border: rgba(0,0,0,0.2);
+      --timeline-dot: rgba(0,0,0,0.3);
+      --faq-border: rgba(0,0,0,0.05);
+      --faq-text: rgba(0,0,0,0.7);
+      --faq-answer: rgba(0,0,0,0.5);
+      --faq-icon: rgba(0,0,0,0.4);
+      --footer-border: rgba(0,0,0,0.05);
+      --footer-text: rgba(0,0,0,0.4);
+      --trusted-text: rgba(0,0,0,0.4);
+      --trusted-badge-bg: rgba(0,0,0,0.1);
+      --contact-label: rgba(0,0,0,0.5);
+      --contact-link: rgba(0,0,0,0.8);
+      --theme-icon-color: #000000;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.5s, color 0.5s;
+      overflow-x: hidden;
+    }
+
+    /* Scroll progress */
+    #scroll-bar {
+      position: fixed; top: 0; left: 0; right: 0; height: 3px;
+      background: #6366f1; transform-origin: left;
+      transform: scaleX(0); z-index: 200; transition: transform 0.1s linear;
+    }
+
+    /* Cursor spotlight */
+    #spotlight {
+      pointer-events: none; position: fixed; inset: 0; z-index: 30;
+      transition: opacity 0.3s;
+      display: none;
+    }
+    @media (min-width: 768px) { #spotlight { display: block; } }
+
+    /* Background */
+    #bg-container {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+    }
+    #bg-img {
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.2; transform: scale(1.1); transition: opacity 0.7s;
+    }
+    body.light #bg-img { opacity: 0.15; }
+    #bg-grad1 {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom right, var(--bg), transparent, var(--bg));
+    }
+    #bg-grad2 {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--bg), transparent, var(--bg));
+    }
+
+    /* Main */
+    main {
+      position: relative; z-index: 10;
+      max-width: 1280px; margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    /* Header */
+    header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 4rem;
+      animation: fadeDown 1s cubic-bezier(.21,.47,.32,.98) both;
+    }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900; letter-spacing: -0.04em;
+      text-transform: uppercase; line-height: 1;
+      color: rgba(255,255,255,0.3);
+    }
+    body.light h1 { color: #000; }
+
+    .subtitle {
+      font-size: clamp(0.8rem, 2vw, 1.1rem);
+      font-weight: 500; letter-spacing: 0.3em;
+      text-transform: uppercase; margin-top: 0.5rem; margin-left: 4px;
+      color: rgba(255,255,255,0.8);
+    }
+    body.light .subtitle { color: rgba(0,0,0,0.7); }
+
+    #theme-btn {
+      padding: 1rem; border-radius: 1rem; cursor: pointer;
+      border: 1px solid var(--card-border);
+      background: var(--icon-bg); color: var(--theme-icon-color);
+      backdrop-filter: blur(12px); transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    #theme-btn:hover { background: var(--icon-bg-hover); transform: rotate(180deg); }
+
+    /* Glass Card */
+    .glass-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 2rem; padding: 2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      transition: all 0.5s; animation: fadeUp 0.8s cubic-bezier(.21,.47,.32,.98) both;
+    }
+    .glass-card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-5px);
+    }
+    body.light .glass-card { box-shadow: 0 25px 50px rgba(99,102,241,0.1); }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); filter:blur(10px); } to { opacity:1; transform:translateY(0); filter:blur(0); } }
+
+    /* Grid */
+    .bento-grid {
+      display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem;
+    }
+    .col-12 { grid-column: span 12; }
+    .col-8 { grid-column: span 12; }
+    .col-7 { grid-column: span 12; }
+    .col-5 { grid-column: span 12; }
+    .col-4 { grid-column: span 12; }
+    @media (min-width: 768px) {
+      .col-8 { grid-column: span 8; }
+      .col-7 { grid-column: span 7; }
+      .col-5 { grid-column: span 5; }
+      .col-4 { grid-column: span 4; }
+    }
+
+    /* Section Label */
+    .section-label {
+      display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;
+    }
+    .section-label span {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em;
+      font-weight: 700; color: var(--label-color);
+    }
+    .dot-pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #10b981; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+
+    /* Bio card */
+    .bio-card { display: flex; flex-direction: column; justify-content: space-between; }
+    .bio-heading {
+      font-size: clamp(1.4rem, 3vw, 1.875rem); font-weight: 700;
+      line-height: 1.3; margin-bottom: 1rem;
+    }
+    .bio-heading .muted { color: var(--text-dim); }
+    .bio-text { font-size: 0.875rem; line-height: 1.7; color: var(--text-dim); max-width: 42rem; }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+      margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--divider);
+    }
+    @media (min-width: 480px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+    .stat-num {
+      font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 900; color: var(--text);
+    }
+    .stat-label {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em;
+      font-weight: 700; color: var(--text-faint); margin-top: 4px;
+    }
+
+    /* Skills */
+    .skill-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+    .skill-item { display: flex; align-items: center; gap: 1rem; }
+    .icon-box {
+      width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;
+      background: var(--icon-bg); display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s; flex-shrink: 0;
+    }
+    .skill-item:hover .icon-box { background: var(--icon-bg-hover); }
+    .skill-name { font-size: 0.875rem; font-weight: 500; color: var(--text); opacity: 0.8; }
+    .icon-blue { color: #3b82f6; }
+    .icon-purple { color: #a855f7; }
+    .icon-green { color: #10b981; }
+    .icon-rose { color: #f43f5e; }
+    .icon-amber { color: #f59e0b; }
+
+    /* Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+    .timeline-item { position: relative; padding-left: 1.5rem; border-left: 1px solid var(--timeline-border); }
+    .timeline-dot {
+      position: absolute; left: -5px; top: 4px;
+      width: 9px; height: 9px; border-radius: 50%; background: var(--timeline-dot);
+    }
+    .tl-company { font-size: 0.875rem; font-weight: 700; color: var(--text); }
+    .tl-date { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--label-color); margin-bottom: 2px; }
+    .tl-role { font-size: 0.75rem; color: var(--text-dim); }
+
+    /* Testimonials */
+    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 1024px) { .testimonials-grid { grid-template-columns: 1fr 1fr; } }
+    .testimonial-quote { font-size: 0.875rem; font-style: italic; color: var(--faq-text); line-height: 1.7; }
+    .testimonial-name { font-size: 0.75rem; font-weight: 700; color: var(--text); margin-top: 1rem; }
+    .testimonial-role { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-faint); }
+    .testimonials-divider { border-top: 1px solid var(--divider); margin: 2rem 0; }
+
+    /* Demo / CTA banner */
+    .cta-banner {
+      display: flex; flex-direction: column; gap: 2rem;
+      background: linear-gradient(to bottom right, rgba(99,102,241,0.1), rgba(168,85,247,0.1));
+      border-color: rgba(99,102,241,0.2) !important;
+    }
+    body.light .cta-banner {
+      background: linear-gradient(to bottom right, rgba(99,102,241,0.2), rgba(168,85,247,0.2));
+      border-color: rgba(99,102,241,0.3) !important;
+    }
+    @media (min-width: 768px) { .cta-banner { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .cta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: #818cf8; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+    body.light .cta-label { color: #4f46e5; }
+    .cta-heading { font-size: clamp(1.4rem, 3vw, 1.875rem); font-weight: 900; color: var(--text); margin-bottom: 1rem; }
+    .cta-text { font-size: 0.875rem; color: var(--text-dim); line-height: 1.7; max-width: 40rem; }
+    .btn-indigo {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: #6366f1; color: white; padding: 1rem 2rem;
+      border-radius: 1rem; font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
+      border: none; text-decoration: none; transition: background 0.2s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .btn-indigo:hover { background: #4f46e5; }
+
+    /* AI Tools / Software grid */
+    .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (min-width: 640px) { .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .tools-grid.ai-grid { grid-template-columns: repeat(4, 1fr); } .tools-grid.sw-grid { grid-template-columns: repeat(5, 1fr); } }
+    .tool-section { display: flex; flex-direction: column; gap: 1rem; }
+    .tool-header { display: flex; align-items: center; gap: 0.75rem; }
+    .tool-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text); }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      padding: 0.25rem 0.5rem; background: var(--tag-bg);
+      color: var(--tag-text); border: 1px solid var(--tag-border);
+      border-radius: 4px; font-size: 10px;
+    }
+
+    /* Videos */
+    .videos-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 640px) { .videos-grid { grid-template-columns: 1fr 1fr; } }
+    .video-wrapper {
+      aspect-ratio: 16/9; position: relative; background: #000;
+      border-radius: 1.5rem; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .video-wrapper iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+    }
+    .video-caption { margin-top: 0.5rem; text-align: center; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--label-color); }
+
+    /* Instagram CTA */
+    .ig-banner {
+      display: flex; flex-direction: column; gap: 2rem;
+      background: linear-gradient(to bottom right, rgba(244,63,94,0.1), rgba(249,115,22,0.1));
+      border-color: rgba(244,63,94,0.2) !important;
+    }
+    body.light .ig-banner {
+      background: linear-gradient(to bottom right, rgba(244,63,94,0.2), rgba(249,115,22,0.2));
+      border-color: rgba(244,63,94,0.3) !important;
+    }
+    @media (min-width: 768px) { .ig-banner { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .ig-label { color: #fb7185; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+    body.light .ig-label { color: #e11d48; }
+    .btn-rose {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: #f43f5e; color: white; padding: 1rem 2rem;
+      border-radius: 1rem; font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
+      border: none; text-decoration: none; transition: background 0.2s;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .btn-rose:hover { background: #e11d48; }
+
+    /* Pricing */
+    .pricing-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
+    .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 768px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
+    .plan-card { position: relative; overflow: hidden; }
+    .plan-badge {
+      position: absolute; top: 0; right: 0;
+      background: #6366f1; color: white; font-size: 8px;
+      font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em;
+      padding: 4px 12px; border-bottom-left-radius: 12px;
+    }
+    .plan-highlight { border-color: rgba(99,102,241,0.5) !important; background: rgba(99,102,241,0.05) !important; }
+    .plan-name { font-size: 1.25rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.5rem; }
+    .plan-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 2rem; }
+    .plan-amount { font-size: 2.25rem; font-weight: 900; color: var(--text); }
+    .plan-unit { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: var(--text-faint); }
+    .plan-box { background: var(--icon-bg); border-radius: 1rem; padding: 1rem; margin-bottom: 2rem; }
+    .plan-videos { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text); }
+    .plan-revisions { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--label-color); margin-top: 2px; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+    .plan-feature { display: flex; align-items: center; gap: 0.75rem; font-size: 0.75rem; color: var(--text-dim); }
+    .feature-check {
+      width: 1.25rem; height: 1.25rem; border-radius: 50%;
+      background: rgba(99,102,241,0.2); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .btn-plan-primary {
+      width: 100%; padding: 1rem; border-radius: 0.75rem;
+      font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em;
+      cursor: pointer; border: none; background: #6366f1; color: white;
+      box-shadow: 0 4px 20px rgba(99,102,241,0.2); transition: background 0.2s;
+    }
+    .btn-plan-primary:hover { background: #4f46e5; }
+    .btn-plan-secondary {
+      width: 100%; padding: 1rem; border-radius: 0.75rem;
+      font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em;
+      cursor: pointer; border: none; background: var(--btn-secondary-bg); color: var(--btn-secondary-text);
+      transition: background 0.2s;
+    }
+    .btn-plan-secondary:hover { background: var(--btn-secondary-hover); }
+
+    /* Footer */
+    footer { margin-top: 6rem; padding-top: 3rem; border-top: 1px solid var(--footer-border); }
+    .trusted-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.4em; font-weight: 700; color: var(--trusted-text); text-align: center; margin-bottom: 2rem; }
+    .trusted-logos {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 2rem 4rem; opacity: 0.4; filter: grayscale(1); transition: all 0.5s;
+      margin-bottom: 4rem;
+    }
+    .trusted-logos:hover { opacity: 1; filter: grayscale(0); }
+    .trusted-logo { display: flex; align-items: center; gap: 0.5rem; }
+    .trusted-badge {
+      width: 2rem; height: 2rem; border-radius: 6px; background: var(--trusted-badge-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 900; color: var(--text);
+    }
+    .trusted-badge.circle { border-radius: 50%; border: 1px solid var(--timeline-border); font-style: italic; font-family: serif; }
+    .trusted-name { font-size: 0.875rem; font-weight: 500; color: var(--text); letter-spacing: -0.02em; }
+
+    /* FAQ */
+    .faq-grid { display: grid; grid-template-columns: 1fr; gap: 0 3rem; }
+    @media (min-width: 768px) { .faq-grid { grid-template-columns: 1fr 1fr; } }
+    .faq-item { border-bottom: 1px solid var(--faq-border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-btn {
+      width: 100%; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center;
+      background: none; border: none; cursor: pointer; text-align: left;
+      color: var(--faq-text); transition: color 0.2s;
+    }
+    .faq-btn:hover { color: var(--text); }
+    .faq-question { font-size: 0.875rem; font-weight: 500; color: var(--faq-text); }
+    .faq-icon { color: var(--faq-icon); flex-shrink: 0; }
+    .faq-answer {
+      font-size: 0.75rem; color: var(--faq-answer); line-height: 1.7; padding-bottom: 1rem;
+      display: none;
+    }
+    .faq-answer.open { display: block; }
+
+    /* Contact info */
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 4rem; }
+    @media (min-width: 640px) { .contact-grid { grid-template-columns: repeat(3, 1fr); } }
+    .contact-item { display: flex; align-items: center; gap: 1rem; }
+    .contact-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--contact-label); }
+    .contact-link { font-size: 0.875rem; font-weight: 500; color: var(--contact-link); text-decoration: none; transition: color 0.2s; }
+    .contact-link:hover { color: var(--text); }
+
+    .footer-bottom {
+      display: flex; flex-direction: column; align-items: center; gap: 2rem;
+      padding-top: 3rem; border-top: 1px solid var(--footer-border);
+    }
+    @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; } }
+    .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+    .social-link {
+      display: flex; align-items: center; gap: 0.5rem;
+      color: var(--label-color); text-decoration: none; font-size: 0.75rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; transition: color 0.2s;
+    }
+    .social-link:hover { color: var(--text); }
+    .social-link.li:hover { color: #0077b5; }
+    .social-link.ig:hover { color: #e1306c; }
+    .copyright { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; color: var(--footer-text); }
+
+    /* Floating CTA */
+    #floating-cta {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      z-index: 50; width: 100%; max-width: 20rem; padding: 0 1rem;
+      animation: slideUp 0.8s 2s cubic-bezier(.21,.47,.32,.98) both;
+    }
+    @keyframes slideUp { from { opacity:0; transform:translate(-50%, 100%); } to { opacity:1; transform:translate(-50%, 0); } }
+    #floating-btn {
+      width: 100%; display: flex; flex-direction: column; align-items: center; gap: 2px;
+      background: white; color: black; padding: 0.875rem 2rem;
+      border-radius: 9999px; border: none; cursor: pointer;
+      font-weight: 700; font-size: 0.875rem; letter-spacing: 0.15em; text-transform: uppercase;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4); transition: transform 0.2s;
+    }
+    body.light #floating-btn {
+      background: linear-gradient(to right, #4f46e5, #7c3aed);
+      color: white;
+    }
+    #floating-btn:hover { transform: scale(1.05); }
+    #floating-btn:active { transform: scale(0.95); }
+    .floating-sub { font-size: 8px; font-weight: 900; color: rgba(0,0,0,0.4); text-transform: none; letter-spacing: 0; }
+    body.light .floating-sub { color: rgba(255,255,255,0.6); }
+
+    /* Modal */
+    #modal-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    #modal-overlay.open { display: flex; }
+    #modal {
+      position: relative; width: 100%; max-width: 28rem;
+      background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 2.5rem; padding: 2rem;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      animation: modalIn 0.3s cubic-bezier(.21,.47,.32,.98);
+    }
+    body.light #modal { background: white; border-color: rgba(0,0,0,0.1); }
+    @keyframes modalIn { from { opacity:0; transform:scale(0.9) translateY(20px); } to { opacity:1; transform:scale(1) translateY(0); } }
+    #modal-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: none; border: none; cursor: pointer;
+      color: rgba(255,255,255,0.2); transition: color 0.2s;
+    }
+    body.light #modal-close { color: rgba(0,0,0,0.2); }
+    #modal-close:hover { color: var(--text); }
+    .modal-title { font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; color: var(--text); text-align: center; margin-bottom: 0.5rem; }
+    .modal-subtitle { font-size: 0.875rem; color: var(--text-dim); text-align: center; margin-bottom: 2rem; }
+    .modal-links { display: flex; flex-direction: column; gap: 1rem; }
+    .modal-link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem; border-radius: 1rem; text-decoration: none;
+      background: var(--icon-bg); border: 1px solid var(--card-border); transition: background 0.2s;
+    }
+    .modal-link:hover { background: var(--icon-bg-hover); }
+    .modal-link-left { display: flex; align-items: center; gap: 1rem; }
+    .modal-link-name { font-weight: 700; color: var(--text); font-size: 0.875rem; }
+    .modal-link-sub { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--label-color); margin-top: 2px; }
+    .modal-footer { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--divider); text-align: center; font-size: 10px; color: var(--label-color); line-height: 1.6; }
+    .modal-footer strong { color: var(--text); }
+
+    /* Fiverr SVG */
+    .fiverr-icon { width: 1.5rem; height: 1.5rem; fill: currentColor; }
+
+    /* Anim delays */
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-45 { animation-delay: 0.45s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+    .delay-61 { animation-delay: 0.61s; }
+    .delay-62 { animation-delay: 0.62s; }
+    .delay-65 { animation-delay: 0.65s; }
+  </style>
+</head>
+<body>
+  <div id="scroll-bar"></div>
+  <div id="spotlight"></div>
+
+  <div id="bg-container">
+    <img id="bg-img" src="https://picsum.photos/seed/saqib/1920/1080?grayscale&blur=2" alt="" referrerpolicy="no-referrer" />
+    <div id="bg-grad1"></div>
+    <div id="bg-grad2"></div>
+  </div>
+
+  <main>
+    <!-- Header -->
+    <header>
+      <div>
+        <h1>Saqib Sial</h1>
+        <p class="subtitle">Video Editor</p>
+      </div>
+      <button id="theme-btn" aria-label="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="theme-icon-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="theme-icon-moon" style="display:none"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></svg>
+      </button>
+    </header>
+
+    <!-- Bento Grid -->
+    <div class="bento-grid">
+
+      <!-- Bio Card -->
+      <div class="glass-card bio-card col-8 delay-1">
+        <div>
+          <div class="section-label">
+            <div class="dot-pulse"></div>
+            <span>Creative Visuals</span>
+          </div>
+          <h2 class="bio-heading">
+            Crafting cinematic stories that <span class="muted">resonate and inspire.</span>
+          </h2>
+          <p class="bio-text">
+            With a deep focus on narrative flow and visual impact, I transform raw footage into compelling cinematic experiences. My approach blends technical precision with creative intuition to deliver content that stands out in a crowded digital landscape.
+          </p>
+        </div>
+        <div class="stats-grid">
+          <div><div class="stat-num">100+</div><div class="stat-label">Projects</div></div>
+          <div><div class="stat-num">10+</div><div class="stat-label">Happy Clients</div></div>
+          <div><div class="stat-num">200+</div><div class="stat-label">Minutes Edited</div></div>
+          <div><div class="stat-num">4+</div><div class="stat-label">Years Experience</div></div>
+        </div>
+      </div>
+
+      <!-- Skills Card -->
+      <div class="glass-card col-4 delay-2">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--label-color)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Expertise</span>
+        </div>
+        <ul class="skill-list">
+          <li class="skill-item">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-blue"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
+            <span class="skill-name">Post-Production</span>
+          </li>
+          <li class="skill-item">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-purple"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg></div>
+            <span class="skill-name">Motion Graphics</span>
+          </li>
+          <li class="skill-item">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-green"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></div>
+            <span class="skill-name">Sound Design</span>
+          </li>
+          <li class="skill-item">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-rose"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
+            <span class="skill-name">Color Grading</span>
+          </li>
+          <li class="skill-item">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-amber"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <span class="skill-name">VFX &amp; Compositing</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Creative Journey -->
+      <div class="glass-card col-5 delay-3">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Creative Journey</span>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="tl-company">Freelance Video Editor</div>
+            <div class="tl-date">2026</div>
+            <div class="tl-role">Post-Production Specialist</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="tl-company">Meridian Studio (YouTube Handle)</div>
+            <div class="tl-date">2024 – 2025</div>
+            <div class="tl-role">Remote Video Editor</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="tl-company">MythTester YouTube Channel</div>
+            <div class="tl-date">2023 – 2024</div>
+            <div class="tl-role">Lead Video Editor</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="tl-company">Evography Media (Instagram Handle)</div>
+            <div class="tl-date">2022 – 2023</div>
+            <div class="tl-role">Video Editor</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="glass-card col-7 delay-4">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+          <span>Client Feedback</span>
+        </div>
+        <div class="testimonials-grid">
+          <div>
+            <p class="testimonial-quote">"We truly appreciate your effort. Saqib's work has been instrumental in our growth."</p>
+            <div class="testimonial-name">MythTester YouTube Channel</div>
+            <div class="testimonial-role">Growth &amp; Engagement</div>
+          </div>
+          <div>
+            <p class="testimonial-quote">"Great Work"</p>
+            <div class="testimonial-name">Umair</div>
+            <div class="testimonial-role">Client</div>
+          </div>
+        </div>
+        <div class="testimonials-divider"></div>
+        <div class="testimonials-grid">
+          <div>
+            <p class="testimonial-quote">"We Truly appreciate your Effort!"</p>
+            <div class="testimonial-name">Content Kitchen</div>
+            <div class="testimonial-role">Client Satisfaction</div>
+          </div>
+          <div>
+            <p class="testimonial-quote">"Fast, creative, and reliable. Saqib handles everything from complex sound design to advanced color grading with ease, making him an essential partner for our post‑production needs."</p>
+            <div class="testimonial-name">Evography Media (Instagram Handle)</div>
+            <div class="testimonial-role">Versatility &amp; Speed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Free Demo Banner -->
+      <div class="glass-card cta-banner col-12 delay-45">
+        <div>
+          <div class="cta-label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            Risk-Free Trial
+          </div>
+          <h2 class="cta-heading">Free Demo Video For Satisfaction</h2>
+          <p class="cta-text">
+            Not sure if we're the right fit? I offer a <strong>complimentary 15 to 25 sec demo edit</strong> of your footage. Experience the quality, rhythm, and cinematic touch firsthand before committing to a full project.
+            <br><span style="font-size:10px;opacity:0.6;font-style:italic;display:block;margin-top:0.5rem;">I'll contact you via saqibsial8586@gmail.com</span>
+          </p>
+        </div>
+        <button class="btn-indigo" onclick="openModal()">
+          Claim Free Demo
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </button>
+      </div>
+
+      <!-- AI Tools -->
+      <div class="glass-card col-12 delay-6">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M20 15h2M2 9h2M20 9h2M9 2v2M9 20v2"/></svg>
+          <span>AI Workflow Integration</span>
+        </div>
+        <div class="tools-grid ai-grid">
+          <div class="tool-section">
+            <div class="tool-header">
+              <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg></div>
+              <span class="tool-title">Video Gen</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Veo 3</span><span class="tag">Grok Video</span><span class="tag">Meta AI</span><span class="tag">Runway</span>
+            </div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-header">
+              <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+              <span class="tool-title">Audio Gen</span>
+            </div>
+            <div class="tags">
+              <span class="tag">ElevenLabs</span><span class="tag">Fish.Audio</span><span class="tag">TTS Maker</span>
+            </div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-header">
+              <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></div>
+              <span class="tool-title">Image Gen</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Nano Banana Pro</span><span class="tag">ImageFX</span><span class="tag">Midjourney</span>
+            </div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-header">
+              <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div>
+              <span class="tool-title">Avatars</span>
+            </div>
+            <div class="tags">
+              <span class="tag">HeyGen AI</span><span class="tag">Synthesia</span><span class="tag">D-ID</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Software Stack -->
+      <div class="glass-card col-12 delay-61">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
+          <span>Professional Software Stack</span>
+        </div>
+        <div class="tools-grid sw-grid">
+          <div class="tool-section">
+            <div class="tool-header">
+              <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+              <span class="tool-title">Desktop</span>
+            </div>
+            <div class="tags"><span class="tag">Capcut PC</span><span class="tag">Filmora PC</span><span class="tag">Open Shot</span></div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-header">
+              <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+              <span class="tool-title">Mobile</span>
+            </div>
+            <div class="tags"><span class="tag">Alight Motion</span><span class="tag">Capcut Mobile</span></div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-header">
+              <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></div>
+              <span class="tool-title">Design</span>
+            </div>
+            <div class="tags"><span class="tag">Canva</span></div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-header">
+              <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>
+              <span class="tool-title">Audio</span>
+            </div>
+            <div class="tags"><span class="tag">Dolby On</span></div>
+          </div>
+          <div class="tool-section">
+            <div class="tool-header">
+              <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+              <span class="tool-title">Utilities</span>
+            </div>
+            <div class="tags"><span class="tag">Cloud Storage</span><span class="tag">File Transfer</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Videos -->
+      <div class="glass-card col-12 delay-62">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>Featured Edits</span>
+        </div>
+        <div class="videos-grid">
+          <div>
+            <div class="video-wrapper">
+              <iframe src="https://drive.google.com/file/d/1G_jN9aOtY1Ex51M7ZsrHim2TpOdwqMmT/preview" allow="autoplay; encrypted-media" title="Featured Video 1"></iframe>
+            </div>
+          </div>
+          <div>
+            <div class="video-wrapper">
+              <iframe src="https://drive.google.com/file/d/1Gpzd65I1zESCSXjmW5qmAxLirAEgqX4P/preview" allow="autoplay; encrypted-media" title="Featured Video 2"></iframe>
+            </div>
+          </div>
+          <div>
+            <div class="video-wrapper">
+              <iframe src="https://drive.google.com/file/d/1OnRB_axdkYT0UZ0x2Di5Q1UePzfF85sP/preview" allow="autoplay; encrypted-media" title="Featured Video 3"></iframe>
+            </div>
+          </div>
+          <div>
+            <div class="video-wrapper">
+              <iframe src="https://drive.google.com/file/d/1bD039p3_aYUynbsQT4pjb63OZ8q9ZgMC/preview" allow="autoplay; encrypted-media" title="Featured Video 4"></iframe>
+            </div>
+          </div>
+        </div>
+        <p class="video-caption" style="margin-top:2rem;">Cinematic Post-Production Showcase</p>
+      </div>
+
+      <!-- Instagram CTA -->
+      <div class="glass-card ig-banner col-12 delay-65">
+        <div>
+          <div class="ig-label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            Portfolio Showcase
+          </div>
+          <h2 class="cta-heading">To See Edits</h2>
+          <p class="cta-text">Want to see my latest work in action? I regularly post my creative edits, motion graphics, and cinematic projects on Instagram. Follow my journey and see the quality I bring to every frame.</p>
+        </div>
+        <a href="https://www.instagram.com/saqibsial2025?igsh=MWZzdnJpaDRyZHN2dg==" target="_blank" rel="noopener noreferrer" class="btn-rose">
+          Watch on Instagram
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+      </div>
+
+    </div><!-- end bento grid -->
+
+    <!-- Pricing -->
+    <div style="margin-top:4rem;">
+      <div class="pricing-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.2em;font-weight:700;color:var(--label-color)">Investment Plans</span>
+      </div>
+      <div class="pricing-grid">
+        <!-- Starter -->
+        <div class="glass-card plan-card">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price"><span class="plan-amount">$350</span><span class="plan-unit">/ Package</span></div>
+          <div class="plan-box">
+            <div class="plan-videos">10 Videos (Under 1 Minute)</div>
+            <div class="plan-revisions">10 Revisions</div>
+          </div>
+          <ul class="plan-features">
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Text Animations</li>
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Color Grading</li>
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Sound Effects</li>
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Motion Graphics</li>
+          </ul>
+          <button class="btn-plan-secondary" onclick="openModal()">Get Started</button>
+        </div>
+        <!-- Growth (highlighted) -->
+        <div class="glass-card plan-card plan-highlight">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Growth</div>
+          <div class="plan-price"><span class="plan-amount">$650</span><span class="plan-unit">/ Package</span></div>
+          <div class="plan-box">
+            <div class="plan-videos">20 Reels (Under 1 Minute)</div>
+            <div class="plan-revisions">Unlimited Revisions</div>
+          </div>
+          <ul class="plan-features">
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Text Animations</li>
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Color Grading</li>
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Sound Effects</li>
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Motion Graphics</li>
+          </ul>
+          <button class="btn-plan-primary" onclick="openModal()">Get Started</button>
+        </div>
+        <!-- Ultra Growth -->
+        <div class="glass-card plan-card">
+          <div class="plan-name">Ultra Growth</div>
+          <div class="plan-price"><span class="plan-amount">$1050</span><span class="plan-unit">/ Package</span></div>
+          <div class="plan-box">
+            <div class="plan-videos">35 Reels (Under 1 Minute)</div>
+            <div class="plan-revisions">Unlimited Revisions</div>
+          </div>
+          <ul class="plan-features">
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Text Animations</li>
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Color Grading</li>
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Sound Effects</li>
+            <li class="plan-feature"><div class="feature-check"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Motion Graphics</li>
+          </ul>
+          <button class="btn-plan-secondary" onclick="openModal()">Get Started</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p class="trusted-label">Trusted By</p>
+      <div class="trusted-logos">
+        <div class="trusted-logo">
+          <div class="trusted-badge">MT</div>
+          <span class="trusted-name">MythTester</span>
+        </div>
+        <div class="trusted-logo">
+          <div class="trusted-badge circle">M</div>
+          <span class="trusted-name">Meridian Studio (YouTube)</span>
+        </div>
+        <div class="trusted-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span class="trusted-name" style="font-style:italic;font-weight:900;text-transform:uppercase;">Evography (Instagram)</span>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="glass-card" style="margin-bottom:4rem;">
+        <div class="section-label">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Common Questions</span>
+        </div>
+        <div class="faq-grid" id="faq-container"></div>
+      </div>
+
+      <!-- Contact -->
+      <div style="margin-bottom:4rem;">
+        <p style="font-size:10px;text-transform:uppercase;letter-spacing:0.3em;font-weight:700;color:var(--label-color);margin-bottom:2rem;">Get In Touch</p>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+            <div>
+              <div class="contact-label">Email</div>
+              <a href="mailto:saqibsial8586@gmail.com" class="contact-link">saqibsial8586@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.77 12 19.79 19.79 0 0 1 1.62 3.26 2 2 0 0 1 3.62 1H6.7a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l1.06-1.06a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div>
+              <div class="contact-label">WhatsApp</div>
+              <a href="https://wa.me/923417361394" target="_blank" class="contact-link">+92 341 7361394</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <div class="contact-label">Location</div>
+              <span class="contact-link">Available Worldwide</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="social-links">
+          <a href="https://www.fiverr.com/s/99vw9GE" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M7.1 12H5.4v6.9H2.1V5.1h8.1v3.1H5.4v1.8h1.7V12zm5.8 6.9h-3.3V5.1h3.3v13.8zm11.1-6.9h-1.7v6.9h-3.3V5.1h8.1v3.1h-4.8v1.8h1.7V12z"/></svg>
+            Fiverr
+          </a>
+          <a href="https://www.linkedin.com/in/saqib-sial-577b92386" target="_blank" rel="noopener noreferrer" class="social-link li">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.instagram.com/saqibsial2025?igsh=MWZzdnJpaDRyZHN2dg==" target="_blank" rel="noopener noreferrer" class="social-link ig">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            Instagram
+          </a>
+        </div>
+        <p class="copyright">© 2024 Saqib Sial. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Floating CTA -->
+  <div id="floating-cta">
+    <button id="floating-btn" onclick="openModal()">
+      <span style="display:flex;align-items:center;gap:0.5rem;">
+        Request a Quote
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </span>
+      <span class="floating-sub">Claim your first free demo Video</span>
+    </button>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="modal-overlay" onclick="handleOverlayClick(event)">
+    <div id="modal">
+      <button id="modal-close" onclick="closeModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+      </button>
+      <h3 class="modal-title">Choose Platform</h3>
+      <p class="modal-subtitle">Select your preferred way to reach out</p>
+      <div class="modal-links">
+        <a href="https://www.fiverr.com/s/99vw9GE" target="_blank" rel="noopener noreferrer" class="modal-link">
+          <div class="modal-link-left">
+            <div class="icon-box"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" style="color:var(--text)"><path d="M7.1 12H5.4v6.9H2.1V5.1h8.1v3.1H5.4v1.8h1.7V12zm5.8 6.9h-3.3V5.1h3.3v13.8zm11.1-6.9h-1.7v6.9h-3.3V5.1h8.1v3.1h-4.8v1.8h1.7V12z"/></svg></div>
+            <div>
+              <div class="modal-link-name">Fiverr</div>
+              <div class="modal-link-sub">Official Services</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/saqib-sial-577b92386" target="_blank" rel="noopener noreferrer" class="modal-link">
+          <div class="modal-link-left">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text)"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <div>
+              <div class="modal-link-name">LinkedIn</div>
+              <div class="modal-link-sub">Professional Network</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+        <a href="https://www.instagram.com/saqibsial2025?igsh=MWZzdnJpaDRyZHN2dg==" target="_blank" rel="noopener noreferrer" class="modal-link">
+          <div class="modal-link-left">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text)"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
+            <div>
+              <div class="modal-link-name">Instagram</div>
+              <div class="modal-link-sub">Direct Message</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+        <a href="mailto:saqibsial8586@gmail.com" class="modal-link">
+          <div class="modal-link-left">
+            <div class="icon-box"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text)"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+            <div>
+              <div class="modal-link-name">Email</div>
+              <div class="modal-link-sub">saqibsial8586@gmail.com</div>
+            </div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--label-color)"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+      </div>
+      <div class="modal-footer">
+        I will personally respond to your request via email at <strong>saqibsial8586@gmail.com</strong> within 24 hours.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Theme ──
+    const body = document.body;
+    const themeBtn = document.getElementById('theme-btn');
+    const sunIcon = document.getElementById('theme-icon-sun');
+    const moonIcon = document.getElementById('theme-icon-moon');
+    let isLight = false;
+
+    themeBtn.addEventListener('click', () => {
+      isLight = !isLight;
+      body.classList.toggle('light', isLight);
+      sunIcon.style.display = isLight ? 'none' : 'block';
+      moonIcon.style.display = isLight ? 'block' : 'none';
+      const img = document.getElementById('bg-img');
+      img.src = isLight
+        ? 'https://picsum.photos/seed/saqib/1920/1080?blur=4'
+        : 'https://picsum.photos/seed/saqib/1920/1080?grayscale&blur=2';
+    });
+
+    // ── Scroll progress ──
+    const scrollBar = document.getElementById('scroll-bar');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      scrollBar.style.transform = `scaleX(${pct})`;
+    });
+
+    // ── Cursor spotlight ──
+    const spotlight = document.getElementById('spotlight');
+    window.addEventListener('mousemove', e => {
+      spotlight.style.background = isLight
+        ? `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(99,102,241,0.08), transparent 80%)`
+        : `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(255,255,255,0.06), transparent 80%)`;
+    });
+
+    // ── FAQ ──
+    const faqs = [
+      { q: "What video editing services do you provide?", a: "I offer a comprehensive post-production suite, including professional assembly, dynamic motion graphics, cinematic color grading, and immersive sound design. Whether it's short-form social content or high-end studio projects, I handle the entire creative pipeline." },
+      { q: "How do you handle motion graphics for my videos?", a: "I specialize in creating custom dynamic typography and seamless transitions. By using advanced keyframe manipulation, I ensure that all text and graphic elements move smoothly and align perfectly with your brand's visual identity." },
+      { q: "Is sound design included in your editing process?", a: "Yes. I believe audio is half the experience. I perform strategic music synchronization, voiceover enhancement, and atmospheric sound layering to ensure your video doesn't just look professional, but sounds immersive and rhythmic." },
+      { q: "Can you give my footage a specific 'cinematic' look?", a: "Absolutely. Using my Color Grading & VFX workflow, I perform cinematic color correction to fix lighting issues and apply stylistic grading to give your video a consistent, high-end film look that matches your desired mood." },
+      { q: "How do I get my project started with you?", a: "You can reach out via the LinkedIn or Fiverr links on my portfolio. Once we discuss your vision and project goals, we can exchange files via secure cloud storage and I can begin the post-production process immediately." },
+      { q: "Do you collaborate with studios or individual creators?", a: "I work with both! I have experience collaborating with professional entities like Meridian Studio on high-tier productions, as well as helping individual creators and brands elevate their social media presence through polished, engaging edits." },
+    ];
+
+    const faqContainer = document.getElementById('faq-container');
+    faqs.forEach((faq, i) => {
+      const div = document.createElement('div');
+      div.className = 'faq-item';
+      div.innerHTML = `
+        <button class="faq-btn" onclick="toggleFaq(${i})">
+          <span class="faq-question">${faq.q}</span>
+          <svg id="faq-icon-${i}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="faq-icon"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer" id="faq-answer-${i}">${faq.a}</div>
+      `;
+      faqContainer.appendChild(div);
+    });
+
+    function toggleFaq(i) {
+      const answer = document.getElementById(`faq-answer-${i}`);
+      const icon = document.getElementById(`faq-icon-${i}`);
+      const isOpen = answer.classList.toggle('open');
+      icon.innerHTML = isOpen
+        ? '<polyline points="18 15 12 9 6 15"/>'
+        : '<polyline points="6 9 12 15 18 9"/>';
+    }
+
+    // ── Modal ──
+    function openModal() { document.getElementById('modal-overlay').classList.add('open'); }
+    function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
+    function handleOverlayClick(e) { if (e.target === document.getElementById('modal-overlay')) closeModal(); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>
